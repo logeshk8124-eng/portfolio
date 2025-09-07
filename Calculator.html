@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glowing Calculator</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #0d0d0d;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculator {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0px 0px 25px rgba(255, 165, 0, 0.3);
+      text-align: center;
+      width: 300px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .quote {
+      color: #00ff99;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0px 0px 8px #00ff99;
+      animation: glow 2s ease-in-out infinite alternate;
+      min-height: 20px; /* avoids layout shift */
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0px 0px 8px #00ff99; }
+      to { text-shadow: 0px 0px 20px #00ff99, 0px 0px 30px #00ffcc; }
+    }
+
+    .title {
+      text-align: center;
+      color: #f39c12;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      text-shadow: 0px 0px 8px #f39c12;
+    }
+
+    #display {
+      width: 95%;
+      margin: 0 auto 15px auto;
+      display: block;
+      height: 55px;
+      font-size: 1.6rem;
+      text-align: right;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      background: #262626;
+      color: #fff;
+      box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.1);
+      transition: 0.3s;
+    }
+
+    #display:focus {
+      box-shadow: 0px 0px 10px #f39c12, inset 0px 0px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    button.number {
+      background: #333;
+      color: #fff;
+    }
+    button.number:hover {
+      background: #444;
+      box-shadow: 0px 0px 8px #888;
+    }
+
+    button.operator {
+      background: #f39c12;
+      color: #fff;
+    }
+    button.operator:hover {
+      background: #e67e22;
+      box-shadow: 0px 0px 10px #f39c12;
+    }
+
+    /* Make the + button big */
+    button.plus {
+      grid-row: span 2;
+      background: #f39c12;
+      color: #fff;
+    }
+    button.plus:hover {
+      background: #e67e22;
+      box-shadow: 0px 0px 12px #f39c12;
+    }
+
+    button.equal {
+      background: #27ae60;
+      color: white;
+      grid-column: span 2;
+    }
+    button.equal:hover {
+      background: #2ecc71;
+      box-shadow: 0px 0px 10px #27ae60;
+    }
+
+    button.clear {
+      background: #c0392b;
+      color: white;
+      grid-column: span 2;
+    }
+    button.clear:hover {
+      background: #e74c3c;
+      box-shadow: 0px 0px 10px #c0392b;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <!-- Rotating Magic Quote -->
+    <div class="quote" id="quote">"Logic is Pure Magic"</div>
+
+    <!-- Heading -->
+    <h2 class="title">Glowing Calculator</h2>
+
+    <!-- Display -->
+    <input type="text" id="display" disabled>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button class="number" onclick="appendNumber('7')">7</button>
+      <button class="number" onclick="appendNumber('8')">8</button>
+      <button class="number" onclick="appendNumber('9')">9</button>
+      <button class="operator" onclick="appendNumber('/')">÷</button>
+
+      <button class="number" onclick="appendNumber('4')">4</button>
+      <button class="number" onclick="appendNumber('5')">5</button>
+      <button class="number" onclick="appendNumber('6')">6</button>
+      <button class="operator" onclick="appendNumber('*')">×</button>
+
+      <button class="number" onclick="appendNumber('1')">1</button>
+      <button class="number" onclick="appendNumber('2')">2</button>
+      <button class="number" onclick="appendNumber('3')">3</button>
+      <button class="plus" onclick="appendNumber('+')">+</button> <!-- Big + -->
+
+      <button class="number" onclick="appendNumber('0')">0</button>
+      <button class="number" onclick="appendNumber('.')">.</button>
+      <button class="operator" onclick="appendNumber('-')">−</button>
+      <button class="equal" onclick="calculate()">=</button>
+
+      <button class="clear" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+
+    function appendNumber(number) {
+      display.value += number;
+    }
+
+    function clearDisplay() {
+      display.value = "";
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Error";
+      }
+    }
+
+    // Rotating Quotes
+    const quotes = [
+      '"Logic is Pure Magic"',
+      '"Code is Poetry"',
+      '"Dream in 0s and 1s"',
+      '"Hello World, Hello Future"',
+      '"Debugging is like detective work"',
+      '"Stay Curious, Keep Coding"'
+    ];
+
+    let quoteIndex = 0;
+    const quoteElement = document.getElementById("quote");
+
+    setInterval(() => {
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+      quoteElement.textContent = quotes[quoteIndex];
+    }, 3000); // changes every 3 seconds
+  </script>
+</body>
+</html>
+
+
+
+
