@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinitas Salon</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom, #111, #000);
+      color: white;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;   /* ✅ smooth scrolling */
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    header.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex; 
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px 40px;
+      background: #1a0101;
+      border-bottom: 20px solid #0f0101;
+      z-index: 1000;
+    }
+
+    .logo-img {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      transition: all 0.2s ease;
+      z-index: 1100;
+    }
+
+    .scrolled .logo-img {
+      position: fixed;
+      top: 12px;
+      left: 40px;
+      width: 200px;
+      transform: none;
+    }
+
+    header nav {
+      display: flex;
+      gap: 25px;
+      margin-left: auto;
+    }
+
+    header nav a {
+      color: #eee;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover { color: #c084fc; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 180px 20px 60px;
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-top: 100px;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 20px auto;
+      color: #bbb;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      background: #c084fc;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #a855f7;
+      transform: scale(1.05);
+    }
+
+    /* Sections */
+    .services, .gallery, .contact {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .services h2, .gallery h2, .contact h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #c084fc;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 15px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+      background: #222;
+    }
+ /* Gallery */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px; max-width: 1100px; margin: 0 auto;
+    }
+    .gallery-grid img {
+      width: 100%; height: 250px; object-fit: cover;
+      border-radius: 15px; transition: transform 0.3s;
+    }
+    .gallery-grid img:hover { transform: scale(1.05); }
+ 
+
+    .contact { background: #111; }
+    .contact p { color: #bbb; margin: 10px 0; }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      border-top: 1px solid #333;
+      color: #777;
+    }
+
+    /* ✅ Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #c084fc;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;             /* hidden by default */
+      z-index: 1200;
+      transition: all 0.3s ease;
+    }
+    #backToTop:hover {
+      background: #a855f7;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <img src="new logo (1).png" alt="Vinitas Logo" class="logo-img" id="logo">
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p>Professional haircuts, styling & beauty services to make you shine.</p>
+    <button class="btn">Book Appointment</button>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">✂️ Haircut</div>
+      <div class="service-card">🎨 Hair Coloring</div>
+      <div class="service-card">💄 Makeup</div>
+      <div class="service-card">💆 Spa & Relaxation</div>
+      <div class="service-card">💅 Nail Care</div>
+      <div class="service-card">🧴 Skincare</div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="gallery">
+    <h2>Our Gallery</h2>
+    <div class="gallery-grid">
+      <img src="image1.jpg" alt="Salon Image 1">
+      <img src="image2.jpeg" alt="Salon Image 2">
+      <img src="image3.jpeg" alt="Salon Image 3">
+      <img src="image1.jpg" alt="Salon Image 4">
+      <img src="image2.jpeg" alt="Salon Image 5">
+      <img src="image1.jpg" alt="Salon Image 6">
+      <img src="image2.jpeg" alt="Salon Image 3">
+      <img src="image3.jpeg" alt="Salon Image 4">
+      
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <p>📍 123 Main Street, Madurai</p>
+    <p>📞 +91 98765 43210</p>
+    <p>✉️ contact@vinitassalon.com</p>
+    <button class="btn">Contact Us</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Vinitas Salon. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ Back to Top Button -->
+  <button id="backToTop">↑</button>
+
+  <script>
+  // ✅ Scroll detection for logo
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+      document.body.classList.add("scrolled");
+    } else {
+      document.body.classList.remove("scrolled");
+    }
+  });
+
+  // ✅ Back to Top logic
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      backToTop.style.display = "block";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  </script>
+</body>
+</html>
+

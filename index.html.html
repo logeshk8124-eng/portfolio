@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <!-- Importing Devicon for skill logos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+<style>
+
+/* Default (desktop) */
+body {
+  font-size: 18px;
+}
+
+/* Mobile view (max 600px width) */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;  /* smaller text for mobile */
+  }
+
+  .projects {
+    grid-template-columns: 1fr; /* stack projects vertically */
+  }
+
+  nav {
+    flex-direction: column; /* menu items one below the other */
+  }
+}
+
+</style>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    /* === HEADER === */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: #000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6600;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover { transform: scale(1.1); }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover { color: #ff6600; }
+
+    /* === HERO SECTION === */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('https://via.placeholder.com/1200x800') no-repeat center/cover;
+    }
+
+    .hero h1 { font-size: 50px; margin-bottom: 10px; animation: fadeIn 2s ease-in; }
+    .hero p { font-size: 20px; margin-bottom: 20px; }
+    .hero button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      background: #ff6600;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .hero button:hover { background: #ff3300; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* === SECTIONS === */
+    section { padding: 60px 20px; text-align: center; }
+    h2 { font-size: 30px; margin-bottom: 20px; color: #ff6600; }
+
+    /* Skills / Projects Cards */
+    .skills, .projects {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      width: 180px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .card:hover { transform: translateY(-10px); background: #333; }
+
+    /* Skill icons */
+    .card i {
+      font-size: 40px;
+      margin-bottom: 10px;
+      display: block;
+      color: #ff6600;
+    }
+
+    /* Footer */
+    footer { background: #000; padding: 20px; text-align: center; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">📌LOGESH</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Hello, I'm LOGESH K</h1>
+    <p>Aspiring Front-End Developer</p>
+    <button onclick="document.getElementById('contact').scrollIntoView()">Hire Me</button>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi, I am a fresher with a strong interest in web development. I have learned the basics of HTML, CSS, and JavaScript, and I am continuously improving my skills. I am passionate about building creative, responsive websites and eager to grow into a smart and confident developer</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card"><i class="devicon-html5-plain"></i>HTML</div>
+      <div class="card"><i class="devicon-css3-plain"></i>CSS</div>
+      <div class="card"><i class="devicon-javascript-plain"></i>JavaScript (Learning)</div>
+      <div class="card"><i class="devicon-windows8-original"></i>Excel</div>
+      <div class="card"><i class="devicon-windows8-original"></i>Word</div>
+      <div class="card"><i class="devicon-windows8-original"></i>PowerPoint</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <a href="https://github.com/yourusername/portfolio" target="_blank" class="card">Portfolio Website</a>
+
+      <a href="Calculator.html" target="_blank" class="card">
+  Glowing Calculator
+  
+</a>
+<style>
+ .projects a.card {
+  text-decoration: none;   /* removes underline */
+  color: white;            /* makes text white */
+  display: block;          /* makes the whole card clickable */
+  text-align: center;
+  border: 1px solid #444;  /* same border style */
+  border-radius: 10px;
+  padding: 20px;
+  background: #222;        /* dark card background */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.projects a.card:hover {
+  background: #333;
+  transform: translateY(-5px);
+}
+</style>
+      <a href="Salon Website.html" target="_blank" class="card">Salon Web Page</a>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>📧Email: lokeshw918@gmail.com</p>
+    <p>📞Ph.Number: 8825838326</P>
+    <p>LinkedIn: linkedin.com/in/yourprofile</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 LOGESH K. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
